@@ -130,10 +130,10 @@
       <div class="info-item">📍 <span id="display-location">Ville</span></div>
     </div>
 
-    <!-- BOUTONS RÉSEAUX SOCIAUX INTÉGRÉS -->
+    <!-- BOUTONS RÉSEAUX SOCIAUX (Modifie les liens href="#") -->
     <div class="social-container">
-      <a href="https://www.instagram.com/jiji__stay?exln=MW5zZTBxdnR3a2x1OQ%3D%3D&utm_source=qr" target="_blank" class="social-btn">📷 Instagram</a>
-      <a href="https://wa.me/qr/RV7VKQYACJOCN1?s=p" target="_blank" class="social-btn">💬 WhatsApp</a>
+      <a href="https://instagram.com/TON_INSTAGRAM" target="_blank" class="social-btn">📷 Instagram</a>
+      <a href="https://snapchat.com/add/TON_SNAP" target="_blank" class="social-btn">👻 Snapchat</a>
     </div>
 
     <!-- BOUTON ENREGISTRER CONTACT -->
@@ -153,7 +153,7 @@
   </div>
 
   <script>
-    // --- TES INFORMATIONS ---
+    // --- PERSONNALISE TES INFORMATIONS ICI ---
     const contactData = {
       firstName: "Ettoré",
       lastName: "Munos",
@@ -191,7 +191,7 @@
       }
     }
 
-    // Fonction de partage natif
+    // Fonction de partage natif (ouvre le menu de partage du téléphone)
     function shareCard() {
       if (navigator.share) {
         navigator.share({
@@ -219,4 +219,14 @@ END:VCARD`;
 
       const blob = new Blob([vcardContent], { type: 'text/vcard;charset=utf-8;' });
       const url = URL.createObjectURL(blob);
-      const link = document.createElement
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', `${contactData.firstName}_${contactData.lastName}.vcf`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  </script>
+
+</body>
+</html>
